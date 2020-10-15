@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
 User.destroy_all
@@ -12,108 +5,204 @@ Post.destroy_all
 Comment.destroy_all
 Vote.destroy_all
 
-# for i in 0...20 do
-#     gender = (i % 2 == 0) ? "male" : "female"
-#     user = User.create!(username: Faker::Name.unique.name, password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), gender: gender, location: Faker::Address.city)
-#     severe = (i % 2 == 0) ? true : false
-    
-#     post = Post.create!(mood_rating: Faker::Lorem.sentence(word_count: 3), mood_length: Faker::Lorem.sentence(word_count: 3), mood_location: Faker::Lorem.sentence(word_count: 3), 
-#     mood_trigger: Faker::Lorem.sentence(word_count: 3), mood_trigger_detail: Faker::Lorem.sentence(word_count: 3), mood_description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4), mood_purpose: Faker::Lorem.sentence(word_count: 3), mood_title: Faker::Lorem.sentence(word_count: 1), mood_category: Faker::SlackEmoji.activity, mood_category_detail: Faker::Lorem.sentence(word_count: 3), poster_id: user.id, poster_name: user.username)
-    
-#     Comment.create(comment: Faker::Lorem.sentence(word_count: 3), post: post, commenter_id: user.id)
-#     Comment.create(comment: Faker::Lorem.sentence(word_count: 3), post: post, commenter_id: user.id)
-# end
+MOOD_RATING = [
+    "Awesome!",
+    "Pretty good",
+    "Doing okay",
+    "A little down",
+    "Could be better",
+    "Having a hard time"
+]
 
-# Post.all.each do |post|
-#     post.comments.create(comment: Faker::Lorem.sentence(word_count: 3), commenter_id: User.all.first.id)
-#     post.comments.create(comment: Faker::Lorem.sentence(word_count: 3), commenter_id: User.all.first.id)
-# end
+MOOD_LENGTH = [
+    "Just today",
+    "A few days",
+    "A few weeks",
+    "1-6 months",
+    "6-12 months",
+    "Over a year"
+]
 
-# Comment.all.each do |comment|
-#     comment.votes.create!(voter_id: User.all.first.id, upvote: true)
-#     comment.votes.create!(voter_id: User.all.last.id, upvote: false)
-# end
+MOOD_LOCATION = [
+    "At home",
+    "At school",
+    "At work",
+    "Traveling",
+    "With my friends",
+    "With my family",
+    "With my loved one"
+]
 
-user1  = User.create!(username: "betty12345", password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 25, max_age: 35), gender: "Female", location: "New York, NY")
-user2  = User.create!(username: "Alan54321", password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 30, max_age: 40), gender: "Male", location: "Brooklyn, NY")
+MOOD_CATEGORY = [
+    "Family",
+    "Work",
+    "School",
+    "Friends",
+    "Relationships",
+    "Self-confidence",
+    "Other"
+]
 
-post1  = Post.create!(mood_rating: "Pretty good", mood_length: "A few days", mood_location: "At work", 
-mood_trigger: "Yes", mood_trigger_detail: "Got a raise", mood_description: "I made the case for higher pay  months ago and a raise finally came through", mood_purpose: "Give Support", mood_title: "Finally got a raise!", mood_category: "Work", mood_category_detail: "", poster_id: user1.id, poster_name: user1.username)
-
-post2  = Post.create!(mood_rating: "Could be better", mood_length: "A few weeks", mood_location: "Watching the news", 
-mood_trigger: "Yes", mood_trigger_detail: "Talking to family", mood_description: "My uncle keeps calling me because watches Fox News and thinks New York is a war zone", mood_purpose: "Get Support", mood_title: "Worried about election", mood_category: "Other", mood_category_detail: "Politics", poster_id: user2.id, poster_name: user2.username)
-
-comment1 = Comment.create(comment: "Great! Congratulations!", post: post1, commenter_id: user2.id)
-
-comment2 = Comment.create(comment: "Wow, that must be difficult", post: post2, commenter_id: user1.id)
-
-# post1.comments.create(comment: Faker::Lorem.sentence(word_count: 3), commenter_id: User.all.first.id)
-
-comment1.votes.create!(voter_id: User.all.first.id, upvote: true)
-comment2.votes.create!(voter_id: User.all.first.id, upvote: true)
-
-user1 = User.create!(username: "Geoffrey", password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), gender: "Male", location: Faker::Address.city)
-user2 = User.create!(username: "Jeffery", password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), gender: "Male", location: Faker::Address.city)
-user3 = User.create!(username: "JeffAlder", password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), gender: "Male", location: Faker::Address.city)
-user4 = User.create!(username: "Tsunade", password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), gender: "Female", location: "Hidden Leaf Village")
-user5 = User.create!(username: "Orochimaru", password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), gender: "Male", location: "Hidden Leaf Village")
-user5 = User.create!(username: "Jiraiya", password: Faker::Alphanumeric.alpha(number: 10), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), gender: "Male", location: "Hidden Leaf Village")
-
-
-post1 = Post.create!(mood_rating: "Pretty good", mood_length: "A few weeks", mood_location: "The DOM", 
-mood_trigger: "No", mood_trigger_detail: "", 
-mood_description: "I spent so much time thinking that I'm just not smart enough, just not resilient enough to be a programmer.
-I took a few classes in high school, which I enjoyed, but then I did awful in my first college CS class. Now, 
-going back to programming has finally made me believe in myself. Every bug I solve makes me feel stronger than before.", 
-mood_purpose: "Give Support", mood_title: "Coding Catharsis", 
-mood_category: "Self-confidence", mood_category_detail: "", 
-poster_id: user1.id, poster_name: user1.username)
-
-post1.comments.create!(comment: "Amazing man! So easy for one small setback to take us off track. Glad you hopped back on!" , commenter_id: user2.id)
-post1.comments.create!(comment: "Major props, brother.", commenter_id: user3.id)
-
-post2 = Post.create!(mood_rating: "Doing okay", mood_length: "A few weeks", mood_location: "In Marching Band Practice",
-mood_trigger: "Yes", mood_trigger_detail: "Meeting new people", 
-mood_description: "It's almost hard to admit, but the happiest part of every school year is marching band season.
-I love my friends, but there's something special about connecting with people who I would NEVER talk to, if we weren't
-band-mates.", mood_purpose: "Give Support", mood_title: "Why I March.", 
-mood_category: "School", mood_category_detail: "aker::Lorem.sentence(word_count: 3)", 
-poster_id: user1.id, poster_name: user1.username)
-
-post2.comments.create!(comment: "Ha, even though I graduated high school 15 years ago, my fondest memories are still from marching band." , commenter_id: user2.id)
-post2.comments.create!(comment: "I feel you, dude. That's the only reason I did sports in high school, the camaraderie.", commenter_id: user3.id)
-
-post3 = Post.create!(mood_rating: "A little down", mood_length: "1-6 months", mood_location: "In my room",
-mood_trigger: "No", mood_trigger_detail: "", 
-mood_description: "My parents don't understand my love of slugs.", 
-mood_purpose: "Get Support", mood_title: "Any slug lovers out there?", 
-mood_category: "Family", mood_category_detail: "", 
-poster_id: user4.id, poster_name: user4.username)
-
-post3.comments.create!(comment: "Slugs are nothing compared to snakes!" , commenter_id: user4.id)
-post3.comments.create!(comment: "But frogs are what really reign supreme.", commenter_id: user5.id)
-
-post4 = Post.create!(mood_rating: "Could be better", mood_length: "Just today", mood_location: "In quarantine",
-mood_trigger: "No", mood_trigger_detail: "", 
-mood_description: "I'm going to miss all my best coding buds!", 
-mood_purpose: "Get Support", mood_title: "Bye Bye 062220!", 
-mood_category: "School", mood_category_detail: "", 
-poster_id: user2.id, poster_name: user2.username)
-
-post3.comments.create!(comment: "062220 is best cohort ever!" , commenter_id: user3.id)
-post3.comments.create!(comment: "I never really liked that Jeff guy much.", commenter_id: user2.id)
-
-post5 = Post.create!(mood_rating: "Awesome!", mood_length: "Just today", mood_location: "In Konoha",
-mood_trigger: "Yes", mood_trigger_detail: "Seeing my pupil succeed!", 
-mood_description: "So f-ing proud of my pupil Uzumaki Naruto for successfully executing the legendary Rasengan technique!", 
-mood_purpose: "Give Support", mood_title: "Nothing like the feeling of teaching others.", 
-mood_category: "Relationships", mood_category_detail: "", 
-poster_id: user5.id, poster_name: user5.username)
-
-Comment.all.each do |comment|
-    comment.votes.create!(voter_id: User.all.first.id, upvote: true)
-    comment.votes.create!(voter_id: User.all.last.id, upvote: false)
-    comment.votes.create!(voter_id: User.all.first.id, upvote: true)
-    comment.votes.create!(voter_id: User.all.last.id, upvote: false)
+#Seed Users
+for i in 1..5 do 
+    User.create!(
+        username: Faker::Internet.unique.username(specifier: 7..19), 
+        password: Faker::Alphanumeric.alpha(number: 10), 
+        birthdate: Faker::Date.birthday(min_age: 22, max_age: 50), 
+        gender: Faker::Gender.binary_type, 
+        location: Faker::Address.city
+    )
 end
 
+#Seed Posts and Comments
+post1 = Post.create!(
+    mood_rating: MOOD_RATING[0], 
+    mood_length: MOOD_LENGTH[0], 
+    mood_location: MOOD_LOCATION[2], 
+    mood_trigger: "Yes" ,
+    mood_trigger_detail: "Finally got rewarded for my hard work.", 
+    mood_description: "I made the case for higher pay months ago and a raise finally came through!", 
+    mood_purpose: "Give Support", 
+    mood_title: "Got a raise!", 
+    mood_category: MOOD_CATEGORY[1], 
+    mood_category_detail: "", 
+    poster_id: User.all[0].id, 
+    poster_name: User.all[0].username
+)
+
+post1.comments.create!(comment: "Heck yes, brother!", commenter_id: User.all[1])
+post1.comments.create!(comment: "GET IT.", commenter_id: User.all[4])
+post1.comments.create!(comment: "YAAASSSSS", commenter_id: User.all[3])
+
+post2 = Post.create!(
+    mood_rating: MOOD_RATING[3], 
+    mood_length: MOOD_LENGTH[4], 
+    mood_location: MOOD_LOCATION[3], 
+    mood_trigger: "Yes" ,
+    mood_trigger_detail: "Skipping sports practice to play games with friends.", 
+    mood_description: "My parents don't understand my love of video games", 
+    mood_purpose: "Get Support", 
+    mood_title: "My parents don't understand me.", 
+    mood_category: MOOD_CATEGORY[0], 
+    mood_category_detail: "", 
+    poster_id: User.all[1].id, 
+    poster_name: User.all[1].username, 
+)
+
+post2.comments.create!(comment: "Ugh, I know what you mean! Even when I really try to explain, they just laugh me off.", commenter_id: User.all[3])
+post2.comments.create!(comment: "Some people are just set in their ways. But eventually you will be able to leave home, and you'll never have to worry about it again.", commenter_id: User.all[4])
+
+post3 = Post.create!(
+    mood_rating: "A little down", 
+    mood_length: "1-6 months", 
+    mood_location: "At home", 
+    mood_trigger: "No" ,
+    mood_trigger_detail: "", 
+    mood_description: "I worry that I might never be able to experience normal life before quarantine.", 
+    mood_purpose: "Get Support", 
+    mood_title: "Life in quarantine.", 
+    mood_category: "Other", 
+    mood_category_detail: "Loneliness", 
+    poster_id: User.all[2].id, 
+    poster_name: User.all[2].username, 
+)
+
+post3.comments.create!(comment: "I know what you mean man. I miss all my favorite late-night spots, and just meeting new people", commenter_id: User.all[3])
+post3.comments.create!(comment: "I feel you, but don't forget that even this will pass.", commenter_id: User.all[4])
+
+post4 = Post.create!(
+    mood_rating: "Pretty good", 
+    mood_length: "A few weeks", 
+    mood_location: "The DOM", 
+    mood_trigger: "No", 
+    mood_trigger_detail: "", 
+    mood_description: "I spent so much time thinking that I'm just not smart enough, just not resilient enough to be a programmer.
+I took a few classes in high school, which I enjoyed, but then I did awful in my first college CS class. Now, 
+going back to programming has finally made me believe in myself. Every bug I solve makes me feel stronger than before.", 
+    mood_purpose: "Give Support", 
+    mood_title: "Coding Catharsis", 
+    mood_category: "Self-confidence", 
+    mood_category_detail: "", 
+    poster_id: User.all[3].id, 
+    poster_name: User.all[3].username
+)
+
+post4.comments.create!(comment: "Amazing man! So easy for one small setback to take us off track. Glad you hopped back on!" , commenter_id: User.all[0])
+post4.comments.create!(comment: "Major props, brother.", commenter_id: User.all[1])
+
+post5 = Post.create!(
+    mood_rating: "Doing okay", 
+    mood_length: "A few weeks", 
+    mood_location: "In Marching Band Practice",
+    mood_trigger: "Yes", 
+    mood_trigger_detail: "Meeting new people", 
+    mood_description: "It's almost hard to admit, but the happiest part of every school year is marching band season.
+I love my friends, but there's something special about connecting with people who I would NEVER talk to, if we weren't
+band-mates.", 
+    mood_purpose: "Give Support", 
+    mood_title: "Why I March.", 
+    mood_category: "School", 
+    mood_category_detail: "", 
+    poster_id: User.all[4].id, 
+    poster_name: User.all[4].username
+)
+
+post5.comments.create!(comment: "Ha, even though I graduated high school 15 years ago, my fondest memories are still from marching band." , commenter_id: User.all[rand(0..User.all.length - 2)])
+post5.comments.create!(comment: "I feel you, dude. That's the only reason I did sports in high school, the camaraderie.", commenter_id: User.all[rand(0..User.all.length - 2)])
+
+post6 = Post.create!(
+    mood_rating: "A little down", 
+    mood_length: "A few weeks", 
+    mood_location: "At school",
+    mood_trigger: "Yes", 
+    mood_trigger_detail: "English class", 
+    mood_description: "I really love reading, and love the idea of analyzing texts and learning from them, but I never seem
+    to catch these metaphors we have to discuss in English class. I wish we could read fantasy
+    or sci-fi or even history. The books we read ruins my interest in the one subject I love.", 
+    mood_purpose: "Get Support", 
+    mood_title: "Why can't English class be fun?", 
+    mood_category: "School", 
+    mood_category_detail: "", 
+    poster_id: User.all[0].id, 
+    poster_name: User.all[0].username
+)
+
+post6.comments.create!(comment: "Agreed. Once you graduate though, you can read whatever you want." , commenter_id: User.all[rand(1..User.all.length - 2)])
+
+post7 = Post.create!(
+    mood_rating: "Having a hard time", 
+    mood_length: "Over a year", 
+    mood_location: "Relationships", 
+    mood_trigger: "Yes", 
+    mood_trigger_detail: "Hanging out with friends", 
+    mood_description: "I've had the same friends since Kindergarten, but recently I just
+    feel unable to relate to them. We've always had fun as the too-cool-for-school slackers,
+    but now I want to exercise and do things that actually bring me joy. But, they're just not
+    onboard.", 
+    mood_purpose: "Get Support", 
+    mood_title: "Drifting away from my friends", 
+    mood_category: "Relationships", 
+    mood_category_detail: "", 
+    poster_id: User.all[4].id, 
+    poster_name: User.all[4].username
+)
+
+post7.comments.create!(comment: "Relationships come and go. It's part of life. Don't sweat it too much." , commenter_id: User.all[1])
+
+#Seed Votes
+Comment.all.each do |comment|
+    rand_number = rand(0..2)
+    if rand_number == 0
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: true)
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: false)
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: true)
+    elsif rand_number == 1
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: false)
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: false)
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: true)
+    else
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: true)
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: true)
+        comment.votes.create!(voter_id: User.all[rand(0..User.all.length - 1)].id, upvote: true)
+    end
+end
